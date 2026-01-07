@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumpleaños 🎉</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        background: white;
+        padding: 40px;
+        width: 90%;
+        max-width: 420px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        animation: fadeIn 2s ease;
+    }
+
+    h1 {
+        color: #e91e63;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #555;
+        font-weight: normal;
+    }
+
+    p {
+        color: #444;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: #e91e63;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #c2185b;
+        transform: scale(1.05);
+    }
+
+    .firma {
+        margin-top: 30px;
+        font-style: italic;
+        color: #777;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎉 ¡Feliz Cumpleaños! 🎉</h1>
+    <h2>Hoy es un día especial</h2>
+
+    <p id="mensaje">
+        Que este nuevo año de vida te regale sonrisas,
+        momentos inolvidables y razones para soñar.
+        Ojalá la vida te sorprenda bonito siempre.
+    </p>
+
+    <button onclick="mostrarSorpresa()">🎁 Ver sorpresa</button>
+
+    <p class="firma">
+        Con cariño,<br>
+        Michelle
+    </p>
+</div>
+
+<script>
+    function mostrarSorpresa() {
+        const mensaje = document.getElementById("mensaje");
+        mensaje.innerHTML = `
+            🌟 Hoy celebro que existas 🌟<br><br>
+            Que nunca te falten sueños, abrazos sinceros
+            ni personas que crean en ti.
+            Gracias por ser tú. 💖🎂
+        `;
+    }
+</script>
+
+</body>
+</html>

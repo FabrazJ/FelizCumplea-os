@@ -5,212 +5,233 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Una carta para ti ✨</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --pink-accent: #e91e63;
-  --soft-bg: #fff5f7;
+  --soft-pink: #fbc2eb;
+  --soft-blue: #a6c1ee;
+  --text-color: #333;
 }
 
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--soft-blue) 100%);
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
+  padding: 20px;
 }
 
 /* SOBRE */
 .sobre {
-  width: 320px;
-  height: 200px;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: clamp(280px, 40vw, 350px);
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  text-align: center;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .sobre:hover {
-  transform: scale(1.06) translateY(-12px);
-  box-shadow: 0 35px 80px rgba(233, 30, 99, 0.25);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(233,30,99,0.2);
 }
 
 .sobre .icon {
   font-size: 4rem;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .sobre .label {
   font-size: 0.8rem;
-  letter-spacing: 3px;
+  font-weight: 600;
+  letter-spacing: 4px;
   color: var(--pink-accent);
   text-transform: uppercase;
-  font-weight: 400;
 }
 
 /* CARTA */
 .carta {
   display: none;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  padding: 60px 50px;
-  border-radius: 40px;
-  max-width: 700px;
-  width: 85%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: clamp(30px, 6vw, 60px);
+  border-radius: 30px;
+  width: 100%;
+  max-width: 650px; /* Reducido para mejor legibilidad */
+  max-height: 85vh;
+  overflow-y: auto; /* Permite scroll si el texto es largo en móviles */
   text-align: center;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.12);
-  z-index: 10;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.15);
   position: relative;
+  border: 1px solid rgba(255,255,255,0.5);
 }
 
-.carta::before,
-.carta::after{
-  position:absolute;
-  font-size:2.4rem;
-  opacity:.35;
+/* Decoraciones en esquinas */
+.carta .deco {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.6;
 }
-
-.carta::before{
-  content:"🌸";
-  top:22px;
-  left:28px;
-}
-
-.carta::after{
-  content:"🌻";
-  bottom:22px;
-  right:28px;
-}
+.deco-tl { top: 20px; left: 20px; }
+.deco-br { bottom: 20px; right: 20px; }
 
 .titulo {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.8rem, 8vw, 5.2rem);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
   color: var(--pink-accent);
-  margin: 0;
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
 
 .texto {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  line-height: 1.85;
-  margin-top: 32px;
-  color: #444;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 1.8;
+  color: var(--text-color);
   font-style: italic;
+  margin-bottom: 25px;
+}
+
+.texto strong {
+  display: block;
+  margin-top: 20px;
+  color: #000;
+  font-weight: 700;
 }
 
 .firma {
-  margin-top: 36px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
   color: var(--pink-accent);
-  opacity: 0.85;
+  margin-bottom: 30px;
 }
 
 /* BOTÓN */
 .btn-next {
-  margin-top: 42px;
-  padding: 14px 42px;
+  padding: 15px 40px;
   background: var(--pink-accent);
   color: white;
   text-decoration: none;
   border-radius: 50px;
-  display: inline-block;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   letter-spacing: 1px;
-  transition: 0.4s;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(233, 30, 99, 0.35);
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(233,30,99,0.3);
 }
 
 .btn-next:hover {
-  transform: translateY(-4px);
-  background: #d81b60;
+  transform: scale(1.05);
+  background: #c2185b;
+  box-shadow: 0 15px 30px rgba(233,30,99,0.4);
 }
 
-/* ANIMACIÓN */
+/* ANIMACIONES */
 .animar-entrada {
-  animation: slideUp 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+  animation: slideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(120px) scale(0.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SCROLLBAR PERSONALIZADO */
+.carta::-webkit-scrollbar {
+  width: 6px;
+}
+.carta::-webkit-scrollbar-thumb {
+  background: var(--soft-pink);
+  border-radius: 10px;
 }
 </style>
 </head>
-
 <body>
 
-<div class="sobre" onclick="abrirCarta()">
-  <div class="icon">💌</div>
-  <div class="label">Para María José</div>
-</div>
-
-<div class="carta" id="carta">
-  <div class="titulo">María José</div>
-
-  <div class="texto">
-    Hoy no es un día cualquiera.<br>
-    Hoy se celebra tu esencia,<br>
-    esa forma tan tuya de iluminar sin hacer ruido.<br><br>
-
-    Hay personas que llegan al mundo<br>
-    para dejar huellas suaves pero eternas,<br>
-    y tú eres una de ellas.<br><br>
-
-    Que la vida te regale instantes sinceros,<br>
-    sonrisas que nazcan sin aviso,<br>
-    y caminos donde siempre te sientas en casa.<br><br>
-
-    <strong>Hoy se celebra tu existencia,<br>
-    y todo lo bonito que despiertas.</strong>
+  <div class="sobre" id="sobre" onclick="abrirCarta()">
+    <span class="icon">💌</span>
+    <div class="label">Una cartita para ti</div>
   </div>
 
-  <div class="firma">Con cariño, Michelle 🤍</div>
+  <div class="carta" id="carta">
+    <span class="deco deco-tl">🌸</span>
+    <span class="deco deco-br">🌻</span>
+    
+    <div class="texto">
+      Hoy quiero regalarte palabras sencillas,<br>
+      de esas que no hacen ruido,<br>
+      pero que se quedan.<br><br>
 
-  <a href="../index.html" class="btn-next" onclick="marcarVisto()">
-    Continuar el camino →
-  </a>
-</div>
+      Hay personas que no necesitan brillar fuerte<br>
+      para iluminarlo todo, y tú tienes esa luz tranquila<br>
+      que acompaña, que calma, que hace bien.<br><br>
+
+      Ojalá la vida te trate con la misma ternura<br>
+      con la que tú miras al mundo. Que encuentres paz en lo cotidiano, alegría en lo pequeño.<br><br>
+
+      <strong>Hoy se celebra tu existencia<br>
+      y todo lo bueno que nace de ti.</strong>
+    </div>
+
+    <a href="../index.html" class="btn-next" onclick="marcarVisto()">
+      Continuar el camino →
+    </a>
+  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script>
 function abrirCarta(){
-  document.querySelector('.sobre').style.display = "none";
+  const sobre = document.getElementById('sobre');
   const carta = document.getElementById('carta');
+  
+  sobre.style.display = "none";
   carta.style.display = "block";
   carta.classList.add('animar-entrada');
 
-  const end = Date.now() + 2200;
-  const colors = ['#fbc2eb', '#ffffff', '#e91e63'];
+  // Lanzar confetti de manera más elegante
+  var duration = 3 * 1000;
+  var end = Date.now() + duration;
 
-  (function frame(){
+  (function frame() {
     confetti({
-      particleCount: 3,
-      spread: 70,
-      origin: { x: Math.random(), y: 0.6 },
-      colors: colors
+      particleCount: 2,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#e91e63', '#fbc2eb']
     });
-    if(Date.now() < end) requestAnimationFrame(frame);
-  })();
+    confetti({
+      particleCount: 2,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#a6c1ee', '#e91e63']
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  }());
 }
 
 function marcarVisto(){

@@ -3,305 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoy se celebra tu cumpleaños ✨</title>
+<title>Un recorrido para ti 💌</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --rosa:#e91e63;
-  --rosa-suave:#f8bbd0;
-  --dorado:#d4af37;
-  --gris:#3f3f3f;
-  --blanco:#fffdfc;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
-  font-family:'Montserrat',sans-serif;
-  background:
-    radial-gradient(circle at top,#ffe4ec,#fbc2eb 55%),
-    linear-gradient(180deg,#fad0c4,#ffffff);
-  min-height:100vh;
-  overflow-x:hidden;
-  color:var(--gris);
-}
-
-/* FLORES */
-.flower{
-  position:fixed;
-  top:-10px;
-  font-size:20px;
-  opacity:.75;
-  animation:fall linear infinite;
-  pointer-events:none;
-  z-index:1;
-}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* CONTENEDOR */
-.container{
-  position:relative;
-  z-index:2;
-  min-height:100vh;
+  height:100vh;
+  background:linear-gradient(-45deg,#fff1eb,#ace0f9,#fdeff2,#e6f0ff);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:24px;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
 }
 
-/* PORTADA */
-.cover{
-  background:linear-gradient(180deg,#ffffff,#fdf0f6);
-  padding:80px 60px;
-  border-radius:38px;
-  box-shadow:0 40px 90px rgba(0,0,0,.28);
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.container{
   text-align:center;
-  max-width:620px;
+  max-width:460px;
   width:100%;
-  animation:fadeIn 1.6s ease;
+  padding:25px;
 }
 
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;}
-}
-
-.icon{
-  font-size:5.5rem;
-  animation:float 3s infinite ease-in-out;
-}
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-18px);}
-}
-
-.frase-dia{
-  margin-top:20px;
-  font-size:.85rem;
-  letter-spacing:4px;
-  color:var(--rosa);
-}
-
-.nombre{
-  font-family:'Great Vibes',cursive;
-  font-size:5rem;
-  color:var(--rosa);
-  margin:20px 0;
-  text-shadow:0 0 28px rgba(233,30,99,.4);
-}
-
-.descripcion{
-  font-family:'Playfair Display',serif;
-  font-size:1.3rem;
-  line-height:1.8;
-}
-
-button{
-  margin-top:40px;
-  padding:18px 64px;
-  border-radius:50px;
-  border:none;
-  font-size:1.05rem;
+/* SOBRE */
+.envelope{
+  width:340px;
+  height:220px;
+  background:#f7c6d0;
+  margin:0 auto;
+  border-radius:0 0 22px 22px;
   cursor:pointer;
-  color:white;
-  background:linear-gradient(45deg,var(--rosa),#ff7aa2);
+  box-shadow:0 35px 80px rgba(0,0,0,.2);
+  animation:pulse 2.5s infinite;
+  position:relative;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+
+.flap{
+  position:absolute;
+  inset:0;
+  background:#f2a7b4;
+  clip-path:polygon(0 0,50% 62%,100% 0);
+  transform-origin:top;
+  transition:1s ease;
+  z-index:3;
+}
+
+.envelope.open .flap{transform:rotateX(180deg)}
+
+.letter{
+  position:absolute;
+  top:20px;left:20px;right:20px;
+  background:#fff;
+  padding:24px;
+  border-radius:14px;
+  transform:translateY(90px);
+  opacity:0;
+  transition:1.3s ease;
+  z-index:2;
+}
+
+.envelope.open .letter{
+  transform:translateY(-50px);
+  opacity:1;
+}
+
+.letter h2{
+  font-family:'Great Vibes',cursive;
+  color:#d94f6a;
+  font-size:2.2rem;
+}
+
+/* PASOS */
+.options{
+  margin-top:70px;
+  display:none;
+}
+
+.options.show{
+  display:block;
+  animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1}
+}
+
+.step{
+  margin-bottom:24px;
+  padding:18px;
+  border-radius:22px;
   transition:.4s;
 }
-button:hover{
-  transform:translateY(-6px);
-  box-shadow:0 25px 55px rgba(233,30,99,.55);
+
+.step h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
 }
 
-.detalle{
-  margin-top:22px;
-  font-size:.9rem;
+.step span{
+  display:block;
+  font-size:12px;
   color:#777;
+  margin:8px 0 12px;
 }
 
-/* CARTA */
-.card{
-  display:none;
-  max-width:980px;
+.step a{
+  display:block;
   width:100%;
-  background:linear-gradient(180deg,#ffffff,#fdf4f8);
-  padding:75px 85px;
-  border-radius:34px;
-  box-shadow:0 45px 110px rgba(0,0,0,.32);
-  animation:fadeUp 1.6s ease forwards;
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(45px);}
-  to{opacity:1;}
+  padding:14px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ffe29f,#ffa99f);
+  color:#333;
+  text-decoration:none;
+  font-weight:500;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
 }
 
-.titulo-carta{
-  font-family:'Great Vibes',cursive;
-  font-size:5.6rem;
-  text-align:center;
-  color:var(--rosa);
+/* BLOQUEADO */
+.locked{
+  opacity:.45;
+  filter:blur(.4px);
+  pointer-events:none;
+  position:relative;
 }
 
-.divider{
-  width:150px;
-  height:3px;
-  margin:36px auto;
-  background:linear-gradient(to right,var(--rosa-suave),var(--dorado));
+.locked::after{
+  content:"🔒";
+  position:absolute;
+  top:14px;
+  right:18px;
+  font-size:1.1rem;
 }
 
-.mensaje{
-  font-family:'Playfair Display',serif;
-  font-size:1.2rem;
-  line-height:2.1;
-}
-.mensaje p{
-  margin-bottom:28px;
-  opacity:0;
-  transform:translateY(20px);
-  animation:textFade 1.2s ease forwards;
-}
-.mensaje p:nth-child(n){
-  animation-delay:calc(var(--i)*.45s);
-}
-@keyframes textFade{
-  to{opacity:1;transform:translateY(0);}
+/* ACTIVO */
+.active{
+  opacity:1;
+  filter:none;
+  animation:glow 2s infinite;
 }
 
-.destacado{color:var(--rosa);font-weight:600;}
-
-.firma{
-  margin-top:55px;
-  text-align:right;
-  font-size:1.35rem;
-  font-family:'Playfair Display',serif;
-  color:var(--rosa);
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)}
+  50%{box-shadow:0 0 18px rgba(255,180,120,.6)}
 }
 
-/* FINAL */
-.final{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at center,#ffe4ec,#fbc2eb 70%),
-    linear-gradient(180deg,#fad0c4,#ffffff);
-  z-index:10;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.final h1{
-  font-family:'Great Vibes',cursive;
-  font-size:6rem;
-  color:var(--rosa);
-}
-.final p{
-  font-family:'Playfair Display',serif;
-  font-size:1.45rem;
-  line-height:1.9;
-}
-
-.brillo{
-  font-size:4.2rem;
-  animation:shine 2.5s infinite ease-in-out;
-}
-@keyframes shine{
-  0%,100%{transform:scale(1);opacity:.8;}
-  50%{transform:scale(1.4);opacity:1;}
+.reset{
+  margin-top:26px;
+  background:none;
+  border:none;
+  font-size:11px;
+  color:#777;
+  cursor:pointer;
+  text-decoration:underline;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLORES -->
-<script>
-for(let i=0;i<50;i++){
-  let f=document.createElement("div");
-  f.className="flower";
-  f.innerHTML="🌸";
-  f.style.left=Math.random()*100+"vw";
-  f.style.fontSize=(12+Math.random()*18)+"px";
-  f.style.animationDuration=(6+Math.random()*10)+"s";
-  document.body.appendChild(f);
-}
-</script>
-
 <div class="container">
 
-<!-- PORTADA -->
-<div class="cover" id="cover">
-  <div class="icon">🎉</div>
-  <div class="frase-dia">HOY SE CELEBRA TU DÍA DE CUMPLEAÑOS</div>
-  <div class="nombre">María José</div>
-  <div class="descripcion">
-    Hoy el mundo tiene un motivo bonito para sonreír.<br>
-    Hoy se celebra tu existencia.
-  </div>
-  <button id="abrir">Descubrir mensaje</button>
-  <div class="detalle">Este mensaje fue pensado solo para ti.</div>
-</div>
-
-<!-- CARTA -->
-<div class="card" id="card">
-  <div class="titulo-carta">María José</div>
-  <div class="divider"></div>
-
-  <div class="mensaje">
-    <p style="--i:1">Hoy se celebra tu cumpleaños, pero también se celebra tu forma de ser, tu esencia, tu sensibilidad y esa manera tan bonita que tienes de estar en la vida.</p>
-    <p style="--i:2">Se celebra tu sonrisa, tu calma, tu capacidad de hacer que los momentos simples se sientan especiales sin siquiera intentarlo.</p>
-    <p style="--i:3">Hay personas que iluminan sin hacer ruido, que dejan huella sin imponer su presencia. Tú eres exactamente así.</p>
-    <p style="--i:4">Hoy quiero desearte un año lleno de tranquilidad, de sueños cumplidos, de abrazos sinceros y de momentos que te hagan sentir orgullosa de quién eres.</p>
-    <p style="--i:5">Que nunca te falte paz, ni motivos para sonreír, ni personas que sepan verte, cuidarte y valorarte.</p>
-    <p style="--i:6">Porque eres <span class="destacado">valiosa, auténtica y profundamente especial</span>, incluso cuando no te das cuenta.</p>
-    <p style="--i:7">Que este nuevo año te recuerde lo mucho que mereces todo lo bonito que sueñas.</p>
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="letter">
+      <h2>Para ti 🌷</h2>
+      <p>Este recorrido está completo…<br>tú decides cuándo avanzar 💛</p>
+    </div>
   </div>
 
-  <div class="firma">Con cariño sincero, Michelle 🤍</div>
+  <div class="options" id="options">
 
-  <div style="text-align:center;margin-top:40px;">
-    <button id="finalBtn">Mensaje final</button>
+    <div class="step active" id="step1">
+      <h3>Paso 1 · El inicio ✨</h3>
+      <span>Todo comienza aquí</span>
+      <a href="#" onclick="go('presentacion','Cartas/carta_presentacion.html')">Abrir la primera carta</a>
+    </div>
+
+    <div class="step locked" id="step2">
+      <h3>Paso 2 · Hoy se celebra tu vida 🎂</h3>
+      <span>Un deseo sincero</span>
+      <a>Leer mi deseo</a>
+    </div>
+
+    <div class="step locked" id="step3">
+      <h3>Paso 3 · Sentirte querida 💛</h3>
+      <span>Palabras que abrazan</span>
+      <a>Leer desde el corazón</a>
+    </div>
+
+    <div class="step locked" id="step4">
+      <h3>Paso final · Siempre aquí 🌙</h3>
+      <span>Para cuando lo necesites</span>
+      <a>Leer con calma</a>
+    </div>
+
+    <button class="reset" onclick="reset()">Reiniciar recorrido</button>
   </div>
-</div>
-
-<!-- FINAL -->
-<div class="final" id="final">
-  <div>
-    <div class="brillo">✨</div>
-    <h1>Feliz Cumpleaños</h1>
-    <p>
-      Que la vida te abrace bonito,<br>
-      que nunca olvides lo especial que eres,<br>
-      y que hoy te sientas celebrada<br>
-      como realmente mereces.
-    </p>
-  </div>
-</div>
 
 </div>
-
-<audio autoplay loop>
-  <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-112.mp3">
-</audio>
-
-<audio id="cumple">
-  <source src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3">
-</audio>
 
 <script>
-abrir.onclick=()=>{
-  cover.style.display="none";
-  card.style.display="block";
-  document.getElementById("cumple").play();
-};
-finalBtn.onclick=()=>{
-  card.style.display="none";
-  final.style.display="flex";
-};
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+  setTimeout(()=>{
+    options.classList.add('show');
+    checkProgress();
+  },1200);
+}
+
+function go(step,url){
+  localStorage.setItem(step,true);
+  window.location.href=url;
+}
+
+function checkProgress(){
+  if(localStorage.getItem('presentacion')){
+    step2.classList.remove('locked');
+    step2.classList.add('active');
+    step2.querySelector('a').onclick=()=>go('cumple','Cartas/carta_cumple.html');
+  }
+  if(localStorage.getItem('cumple')){
+    step3.classList.remove('locked');
+    step3.classList.add('active');
+    step3.querySelector('a').onclick=()=>go('querida','Cartas/carta_profunda.html');
+  }
+  if(localStorage.getItem('querida')){
+    step4.classList.remove('locked');
+    step4.classList.add('active');
+    step4.querySelector('a').href='Cartas/carta_triste.html';
+  }
+}
+
+function reset(){
+  localStorage.clear();
+  location.reload();
+}
 </script>
 
 </body>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90 Destellos para ti 🤍</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #6a89cc;
+        --accent: #e91e63;
+        --bg-grad: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        --glass: rgba(255, 255, 255, 0.85);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--bg-grad);
+        font-family: 'Montserrat', sans-serif;
+        overflow: hidden;
+        color: #333;
+    }
+
+    /* VISTA 1: INICIO */
+    .view-start {
+        text-align: center;
+        animation: fadeIn 1.2s ease-out;
+    }
+
+    .sobre-principal {
+        width: 320px;
+        height: 200px;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .sobre-principal:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 35px 60px -15px rgba(106, 137, 204, 0.3);
+    }
+
+    .sobre-principal .icon { font-size: 4.5rem; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
+    .sobre-principal p { 
+        margin-top: 15px;
+        font-size: 0.75rem; 
+        letter-spacing: 3px; 
+        color: var(--primary); 
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    /* VISTA 2: SELECTOR HORIZONTAL */
+    .view-selector {
+        display: none;
+        width: 100vw;
+        text-align: center;
+        animation: slideUp 0.8s ease-out;
+    }
+
+    .view-selector h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #444;
+        margin-bottom: 5px;
+    }
+
+    .scroll-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 60px 0;
+        cursor: grab;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-wrapper:active { cursor: grabbing; }
+    .scroll-wrapper::-webkit-scrollbar { display: none; }
+
+    .mini-sobre {
+        display: inline-flex;
+        flex-direction: column;
+        width: 140px;
+        height: 100px;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        margin: 0 12px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .mini-sobre:hover {
+        transform: translateY(-15px);
+        background: white;
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(106, 137, 204, 0.2);
+    }
+
+    .mini-sobre span {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 8px;
+    }
+
+    /* VISTA 3: CARTA */
+    .view-carta {
+        display: none;
+        width: 90%;
+        max-width: 550px;
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        padding: 60px 40px;
+        border-radius: 40px;
+        text-align: center;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.6);
+        animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .titulo-carta { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--accent); margin: 0; }
+    .texto-carta { 
+        font-family: 'Playfair Display', serif; 
+        font-size: 1.5rem; 
+        line-height: 1.7; 
+        margin: 35px 0; 
+        color: #444;
+        font-style: italic;
+    }
+
+    /* BOTONES */
+    .btn-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+
+    .btn {
+        padding: 14px 28px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-next { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(106, 137, 204, 0.3); }
+    .btn-next:hover { transform: scale(1.05); box-shadow: 0 12px 25px rgba(106, 137, 204, 0.4); }
+
+    .btn-back { background: rgba(0,0,0,0.05); color: #666; }
+    .btn-back:hover { background: rgba(0,0,0,0.1); }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+</style>
+</head>
+<body>
+
+    <div class="view-start" id="viewStart">
+        <div class="sobre-principal" onclick="goToSelector()">
+            <div class="icon">💌</div>
+            <p>90 Señales para María José</p>
+        </div>
+    </div>
+
+    <div class="view-selector" id="viewSelector">
+        <h2>Un mensaje para cada momento</h2>
+        <p style="color: #888; font-size: 0.8rem;">Arrastra horizontalmente y elige un sobre</p>
+        
+        <div class="scroll-wrapper" id="scrollContainer">
+            </div>
+
+        <button class="btn btn-back" onclick="location.href='../index.html'">Volver al Inicio</button>
+    </div>
+
+    <div class="view-carta" id="viewCarta">
+        <div class="titulo-carta">Para ti</div>
+        <div class="texto-carta" id="textoCarta"></div>
+        <div class="btn-container">
+            <button class="btn btn-back" onclick="backToSelector()">← Volver</button>
+            <button class="btn btn-next" onclick="cambiarFrase()">Otra señal ✨</button>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+const mensajes = [
+    "Si hoy todo pesa un poco más, recuerda que no estás rota.", "Incluso en silencio sigues siendo luz.", "No tienes que ser perfecta para ser increíble.", "Tu brillo está en tu esencia, no en tus logros.", "Mañana será un nuevo comienzo.", "Descansa hoy, que tu alma necesita calma.", "Eres mucho más fuerte de lo que crees.", "Confía en el proceso.", "Tu sensibilidad es un superpoder.", "Incluso las flores necesitan lluvia para crecer.",
+    "Estás exactamente donde necesitas estar.", "Lo estás haciendo mucho mejor de lo que piensas.", "Que tu prioridad hoy sea estar bien contigo.", "Tu sonrisa puede cambiar tu propio día.", "Confía en el tiempo.", "Eres valiosa por el simple hecho de existir.", "Deja ir lo que no puedes controlar.", "Tu versión del futuro agradece que no te rindas.", "La paz mental es el éxito más grande.", "Mereces lo que sueñas.",
+    "Un paso a la vez es suficiente.", "Eres tu proyecto más importante.", "Cuidar de ti no es egoísmo.", "Tu corazón sabe el camino.", "Cree en tu magia.", "Eres el cielo, todo lo demás es el clima.", "Tus miedos no definen tu capacidad.", "Cada día es una nueva oportunidad.", "Sé amable contigo misma.", "Florece a tu propio ritmo.",
+    "No compares tu capítulo 1 con el 20 de otros.", "Eres suficiente.", "Hoy es un regalo.", "Escucha tu intuición.", "Tu valentía es inspiradora.", "Respira profundo.", "Todo pasa por algo.", "Lo bueno toma tiempo.", "Eres luz en la oscuridad.", "Ámate un poquito más hoy.",
+    "No necesitas permiso para brillar.", "Tus errores son lecciones disfrazadas.", "El universo conspira a tu favor.", "Hoy decido ser feliz.", "La gratitud transforma lo que tenemos.", "Eres una obra de arte.", "Tu paz es innegociable.", "Acepta lo que es.", "Suelta lo que fue.", "Ten fe en lo que vendrá.",
+    "Tu voz importa.", "Eres única en este mundo.", "Nadie es como tú y ese es tu poder.", "Sigue adelante.", "Brilla sin apagar a nadie.", "La magia está en los detalles.", "Hoy será un gran día.", "Sonríe, te ves hermosa.", "Eres capaz de cosas increíbles.", "Tu energía es especial.",
+    "No te detengas hasta estar orgullosa.", "Crea tu propia felicidad.", "Eres un imán de cosas buenas.", "Vive el presente.", "Tu potencial es infinito.", "Cada cicatriz cuenta una historia de fuerza.", "No estás sola.", "Abraza tu vulnerabilidad.", "Eres resistencia.", "Eres evolución.",
+    "Elige pensamientos que te hagan bien.", "Tu hogar es tu corazón.", "Aprende a descansar, no a rendirte.", "Eres una guerrera silenciosa.", "Busca la paz, no la razón.", "Sé tu propia prioridad.", "La vida es bella contigo.", "Eres un milagro.", "Nunca pierdas tu curiosidad.", "Confía en tus alas.",
+    "El sol siempre vuelve a salir.", "Eres dueña de tu destino.", "Tu calma es tu fuerza.", "Hoy atraigo abundancia.", "Soy amor.", "Soy luz.", "Soy capaz.", "Soy libre.", "Soy yo misma.", "Y eso es suficiente."
+];
+
+const container = document.getElementById('scrollContainer');
+
+// Generar 90 sobres
+for (let i = 1; i <= 90; i++) {
+    const div = document.createElement('div');
+    div.className = 'mini-sobre';
+    div.innerHTML = `<div style="font-size:2.2rem">✉️</div><span>DESTELLO ${i}</span>`;
+    div.onclick = openCarta;
+    container.appendChild(div);
+}
+
+// Funcionalidad de Arrastre (PC)
+let isDown = false;
+let startX;
+let scrollLeft;
+
+container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    container.classList.add('active');
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+});
+container.addEventListener('mouseleave', () => isDown = false);
+container.addEventListener('mouseup', () => isDown = false);
+container.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2; 
+    container.scrollLeft = scrollLeft - walk;
+});
+
+// Navegación
+function goToSelector() {
+    document.getElementById('viewStart').style.display = 'none';
+    document.getElementById('viewSelector').style.display = 'block';
+}
+
+function openCarta() {
+    document.getElementById('viewSelector').style.display = 'none';
+    document.getElementById('viewCarta').style.display = 'block';
+    cambiarFrase();
+}
+
+function backToSelector() {
+    document.getElementById('viewCarta').style.display = 'none';
+    document.getElementById('viewSelector').style.display = 'block';
+}
+
+function cambiarFrase() {
+    const texto = document.getElementById('textoCarta');
+    texto.style.opacity = 0;
+    
+    setTimeout(() => {
+        const randomIdx = Math.floor(Math.random() * mensajes.length);
+        texto.innerText = mensajes[randomIdx];
+        texto.style.opacity = 1;
+        confetti({
+            particleCount: 50,
+            spread: 70,
+            origin: { y: 0.7 },
+            colors: ['#6a89cc', '#e91e63', '#ffffff']
+        });
+    }, 200);
+}
+</script>
+</body>
+</html>

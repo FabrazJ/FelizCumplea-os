@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Presentación ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        /* Reutilizamos tu estilo base */
+        body {
+            margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: linear-gradient(135deg, #fbc2eb, #f6d365); font-family: 'Montserrat', sans-serif;
+        }
+        .carta {
+            background: #fff; padding: 60px; border-radius: 35px; max-width: 600px;
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            animation: aparecer 1.5s ease;
+        }
+        @keyframes aparecer { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
+        .titulo { font-family: 'Great Vibes', cursive; font-size: 4rem; color: #e91e63; }
+        .texto { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.8; margin: 30px 0; }
+        
+        .btn-siguiente {
+            display: inline-block; padding: 15px 35px; background: #e91e63; color: white;
+            text-decoration: none; border-radius: 50px; font-weight: bold;
+            transition: 0.3s; margin-top: 20px;
+        }
+        .btn-siguiente:hover { transform: scale(1.1); background: #c2185b; }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <div class="titulo">Hola de nuevo...</div>
+        <div class="texto">
+            Antes de seguir, quería decirte que este pequeño espacio es solo para ti. 
+            Quiero que cada palabra te haga sonreír.
+        </div>
+        <a href="../index.html" class="btn-siguiente" onclick="marcarLeido()">Continuar el camino →</a>
+    </div>
+
+    <script>
+        function marcarLeido() {
+            localStorage.setItem('read_presentacion', 'true');
+        }
+    </script>
+</body>
+</html>

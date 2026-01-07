@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <title>Feliz Cumpleaños María José ✨</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-* {
-    box-sizing: border-box;
-}
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    margin: 0;
     height: 100vh;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
     background-size: 400% 400%;
@@ -22,79 +19,80 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: background 1s ease;
 }
 
-/* Tarjeta */
+/* TARJETA */
 .card {
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255,255,255,0.95);
     width: 90%;
-    max-width: 500px;
-    padding: 50px 45px;
-    border-radius: 30px;
+    max-width: 520px;
+    padding: 55px 45px;
+    border-radius: 35px;
     text-align: center;
-    box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.25);
     animation: aparecer 2s ease;
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 
-/* Brillo decorativo */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 30px;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: brillo 4s infinite;
-    pointer-events: none;
-}
-
+/* TITULOS */
 h1 {
     color: #e91e63;
     font-size: 34px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 h2 {
     font-weight: 400;
     color: #666;
-    font-size: 17px;
+    font-size: 16px;
 }
 
-p {
+/* TEXTO */
+#mensaje {
     margin-top: 30px;
     font-size: 15.5px;
-    line-height: 1.85;
+    line-height: 1.9;
     color: #444;
+    min-height: 140px;
 }
 
+/* BOTONES */
 button {
-    margin-top: 35px;
-    padding: 16px 38px;
+    margin-top: 30px;
+    padding: 16px 42px;
     font-size: 16px;
-    border-radius: 45px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     background: linear-gradient(135deg, #e91e63, #ff6090);
     color: white;
-    box-shadow: 0 15px 30px rgba(233,30,99,0.45);
+    box-shadow: 0 18px 35px rgba(233,30,99,0.5);
     transition: all 0.4s ease;
 }
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0 22px 40px rgba(233,30,99,0.65);
+    box-shadow: 0 25px 50px rgba(233,30,99,0.7);
 }
 
+.toggle {
+    background: none;
+    color: #e91e63;
+    box-shadow: none;
+    margin-top: 18px;
+}
+
+/* FIRMA */
 .firma {
-    margin-top: 40px;
+    margin-top: 35px;
     font-style: italic;
     color: #777;
-    font-size: 14.5px;
+    font-size: 14px;
 }
 
-/* Animaciones */
+/* ANIMACIONES */
 @keyframes aparecer {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -106,12 +104,7 @@ button:hover {
     100% { background-position: 0% 50%; }
 }
 
-@keyframes brillo {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Corazones */
+/* CORAZONES */
 .heart {
     position: absolute;
     bottom: -20px;
@@ -121,104 +114,151 @@ button:hover {
 }
 
 @keyframes flotar {
-    from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(-120vh) scale(1.7); opacity: 0; }
+}
+
+/* CONFETTI */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: red;
+    animation: caer 3s linear forwards;
+}
+
+@keyframes caer {
     to {
-        transform: translateY(-120vh) scale(1.6);
+        transform: translateY(120vh) rotate(360deg);
         opacity: 0;
     }
 }
 
-/* Estrellas */
-.star {
+/* PARTÍCULAS */
+.spark {
     position: absolute;
+    width: 6px;
+    height: 6px;
     background: white;
     border-radius: 50%;
-    opacity: 0.7;
-    animation: parpadear 3s infinite alternate;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
-@keyframes parpadear {
-    from { opacity: 0.3; }
-    to { opacity: 0.9; }
+/* MODO OSCURO */
+body.noche {
+    background: linear-gradient(135deg, #1d1d2e, #2b2b45);
 }
+body.noche .card {
+    background: rgba(25,25,40,0.95);
+}
+body.noche h1 { color: #ffb6c1; }
+body.noche h2,
+body.noche p,
+body.noche .firma { color: #ddd; }
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <h1>✨ Feliz Cumpleaños<br>María José ✨</h1>
-    <h2>Un día tan especial como tu esencia</h2>
+    <h1>✨ Feliz Cumpleaños ✨<br>María José</h1>
+    <h2>Un día tan especial como tú</h2>
 
-    <p id="mensaje">
-        Hoy celebro tu vida, tu forma de iluminar
-        los pequeños momentos y la calma que transmites.
-        Que este nuevo año te abrace con experiencias
-        bonitas, sonrisas sinceras y sueños cumplidos.
-    </p>
+    <p id="mensaje"></p>
 
-    <button onclick="mostrarSorpresa()">🎂 Descubrir mensaje</button>
+    <button onclick="siguienteMensaje()">💖 Descubrir</button>
+    <button class="toggle" onclick="modoNoche()">🌙 Modo noche</button>
 
-    <p class="firma">
+    <div class="firma">
         Con cariño sincero,<br>
         Michelle 🤍
-    </p>
+    </div>
 </div>
 
-<!-- Audio -->
 <audio id="audio">
-    <source src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3">
 </audio>
 
 <script>
-/* Estrellas de fondo */
-for (let i = 0; i < 40; i++) {
-    const star = document.createElement("div");
-    star.classList.add("star");
-    const size = Math.random() * 3 + 2;
-    star.style.width = size + "px";
-    star.style.height = size + "px";
-    star.style.top = Math.random() * 100 + "vh";
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.animationDuration = (2 + Math.random() * 3) + "s";
-    document.body.appendChild(star);
-}
+const textos = [
+`Hoy celebro tu vida 🌸<br><br>
+Tu forma de ser, tu calma,
+la luz que transmites incluso
+en los días simples.`,
 
-/* Mensaje sorpresa */
-function mostrarSorpresa() {
+`Que este nuevo año te regale
+momentos bonitos ✨<br><br>
+Personas sinceras,
+sonrisas reales
+y sueños que sí se cumplan.`,
+
+`María José 💖<br><br>
+Hoy no solo celebramos tu cumpleaños,
+celebramos lo especial que eres.
+Feliz vida, feliz tú. 🎂✨`
+];
+
+let indice = 0;
+
+function escribirTexto(texto) {
     const mensaje = document.getElementById("mensaje");
-    const audio = document.getElementById("audio");
-
-    mensaje.innerHTML = `
-        🌸 María José 🌸<br><br>
-        Que la vida te sorprenda bonito,
-        que cada paso que des esté lleno
-        de tranquilidad, amor y momentos
-        que valgan la pena recordar.<br><br>
-        Hoy no solo celebramos tu cumpleaños,
-        celebramos lo especial que eres.
-        Feliz cumpleaños. ✨🎁💖
-    `;
-
-    audio.play();
-    crearCorazones();
+    mensaje.innerHTML = "";
+    let i = 0;
+    const intervalo = setInterval(() => {
+        mensaje.innerHTML += texto.charAt(i);
+        i++;
+        if (i >= texto.length) clearInterval(intervalo);
+    }, 35);
 }
 
-/* Corazones flotando */
+escribirTexto(textos[0]);
+
+function siguienteMensaje() {
+    indice = (indice + 1) % textos.length;
+    escribirTexto(textos[indice]);
+    lanzarConfetti();
+    crearCorazones();
+    document.getElementById("audio").play();
+}
+
+/* EFECTOS */
 function crearCorazones() {
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 25; i++) {
         const heart = document.createElement("div");
-        heart.classList.add("heart");
+        heart.className = "heart";
         heart.innerHTML = "💖";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        heart.style.animationDuration = 4 + Math.random() * 4 + "s";
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 9000);
     }
+}
+
+function lanzarConfetti() {
+    for (let i = 0; i < 40; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.background = `hsl(${Math.random()*360},100%,70%)`;
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+    }
+}
+
+/* PARTÍCULAS MOUSE */
+document.addEventListener("mousemove", e => {
+    const s = document.createElement("div");
+    s.className = "spark";
+    s.style.left = e.clientX + "px";
+    s.style.top = e.clientY + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 600);
+});
+
+/* MODO NOCHE */
+function modoNoche() {
+    document.body.classList.toggle("noche");
 }
 </script>
 

@@ -1,46 +1,114 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Presentación ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
-    <style>
-        /* Reutilizamos tu estilo base */
-        body {
-            margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
-            background: linear-gradient(135deg, #fbc2eb, #f6d365); font-family: 'Montserrat', sans-serif;
-        }
-        .carta {
-            background: #fff; padding: 60px; border-radius: 35px; max-width: 600px;
-            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            animation: aparecer 1.5s ease;
-        }
-        @keyframes aparecer { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
-        .titulo { font-family: 'Great Vibes', cursive; font-size: 4rem; color: #e91e63; }
-        .texto { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.8; margin: 30px 0; }
-        
-        .btn-siguiente {
-            display: inline-block; padding: 15px 35px; background: #e91e63; color: white;
-            text-decoration: none; border-radius: 50px; font-weight: bold;
-            transition: 0.3s; margin-top: 20px;
-        }
-        .btn-siguiente:hover { transform: scale(1.1); background: #c2185b; }
-    </style>
-</head>
-<body>
-    <div class="carta">
-        <div class="titulo">Hola de nuevo...</div>
-        <div class="texto">
-            Antes de seguir, quería decirte que este pequeño espacio es solo para ti. 
-            Quiero que cada palabra te haga sonreír.
-        </div>
-        <a href="../index.html" class="btn-siguiente" onclick="marcarLeido()">Continuar el camino →</a>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentación ✨</title>
 
-    <script>
-        function marcarLeido() {
-            localStorage.setItem('read_presentacion', 'true');
-        }
-    </script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(-45deg,#fff1eb,#ace0f9,#fdeff2,#e6f0ff);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  font-family:'Poppins',sans-serif;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.carta{
+  max-width:680px;
+  width:90%;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(8px);
+  padding:70px 60px;
+  border-radius:40px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.15);
+  animation:aparecer 1.4s ease;
+}
+
+@keyframes aparecer{
+  from{opacity:0;transform:translateY(30px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.titulo{
+  font-family:'Great Vibes',cursive;
+  font-size:4.2rem;
+  color:#d94f6a;
+  margin-bottom:25px;
+}
+
+.texto{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  line-height:1.9;
+  color:#444;
+  margin-bottom:40px;
+}
+
+.btn-siguiente{
+  display:inline-block;
+  padding:16px 40px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#ffe29f,#ffa99f);
+  color:#333;
+  text-decoration:none;
+  font-weight:500;
+  font-size:1rem;
+  box-shadow:0 12px 26px rgba(0,0,0,.2);
+  transition:.4s ease;
+}
+
+.btn-siguiente:hover{
+  transform:scale(1.08);
+  box-shadow:0 16px 34px rgba(0,0,0,.25);
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .carta{padding:55px 35px}
+  .titulo{font-size:3.4rem}
+  .texto{font-size:1.15rem}
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+  <div class="titulo">Hola de nuevo…</div>
+
+  <div class="texto">
+    Antes de seguir, quería decirte algo con calma.<br><br>
+    Este pequeño espacio no busca impresionar,<br>
+    solo existir para ti.<br><br>
+    Ojalá cada palabra que encuentres aquí<br>
+    te arranque una sonrisa sin que te des cuenta.
+  </div>
+
+  <a href="../index.html" class="btn-siguiente" onclick="marcarLeido()">
+    Continuar el camino →
+  </a>
+</div>
+
+<script>
+function marcarLeido(){
+  localStorage.setItem('presentacion', 'true');
+}
+</script>
+
 </body>
 </html>

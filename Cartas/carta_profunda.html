@@ -4,147 +4,159 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Una carta para ti ✨</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --pink-accent: #e91e63;
-    --soft-bg: #fff5f7;
-  }
+:root {
+  --pink-accent: #e91e63;
+  --soft-bg: #fff5f7;
+}
 
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
-  }
+*{
+  box-sizing:border-box;
+}
 
-  /* Sobre estilizado con pulso */
-  .sobre {
-    width: 320px;
-    height: 200px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.4);
-  }
+body {
+  margin: 0;
+  width:100vw;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
 
-  .sobre:hover {
-    transform: scale(1.05) translateY(-10px);
-    box-shadow: 0 35px 70px rgba(233, 30, 99, 0.2);
-  }
+/* SOBRE */
+.sobre {
+  width: 320px;
+  height: 200px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
 
-  .sobre .icon {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-  }
+.sobre:hover {
+  transform: scale(1.06) translateY(-12px);
+  box-shadow: 0 35px 80px rgba(233, 30, 99, 0.25);
+}
 
-  .sobre .label {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: var(--pink-accent);
-    text-transform: uppercase;
-    font-weight: 400;
-  }
+.sobre .icon {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
 
-  /* Carta con diseño minimalista */
-  .carta {
-    display: none;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 60px 40px;
-    border-radius: 40px;
-    max-width: 650px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-    border: 1px solid #fff;
-    z-index: 10;
-  }
+.sobre .label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--pink-accent);
+  text-transform: uppercase;
+  font-weight: 400;
+}
 
-  .titulo {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(3.5rem, 8vw, 5rem);
-    color: var(--pink-accent);
-    margin: 0;
-  }
+/* CARTA */
+.carta {
+  display: none;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  padding: 60px 50px;
+  border-radius: 40px;
+  max-width: 700px;
+  width: 85%;
+  text-align: center;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.12);
+  z-index: 10;
+  position: relative;
+}
 
-  .texto {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-    line-height: 1.8;
-    margin-top: 30px;
-    color: #444;
-  }
+.carta::before,
+.carta::after{
+  position:absolute;
+  font-size:2.4rem;
+  opacity:.35;
+}
 
-  .firma {
-    margin-top: 40px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--pink-accent);
-    opacity: 0.8;
-  }
+.carta::before{
+  content:"🌸";
+  top:22px;
+  left:28px;
+}
 
-  /* Botón de navegación */
-  .btn-next {
-    margin-top: 50px;
-    padding: 15px 40px;
-    background: var(--pink-accent);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    display: inline-block;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    transition: 0.4s;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
-  }
+.carta::after{
+  content:"🌻";
+  bottom:22px;
+  right:28px;
+}
 
-  .btn-next:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
-    background: #d81b60;
-  }
+.titulo {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.8rem, 8vw, 5.2rem);
+  color: var(--pink-accent);
+  margin: 0;
+}
 
-  /* Animaciones */
-  .animar-entrada {
-    animation: slideUp 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  }
+.texto {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.85;
+  margin-top: 32px;
+  color: #444;
+  font-style: italic;
+}
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(100px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+.firma {
+  margin-top: 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--pink-accent);
+  opacity: 0.85;
+}
 
-  /* Contenedor de pétalos */
-  #petals-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 5;
-  }
+/* BOTÓN */
+.btn-next {
+  margin-top: 42px;
+  padding: 14px 42px;
+  background: var(--pink-accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: 0.4s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(233, 30, 99, 0.35);
+}
+
+.btn-next:hover {
+  transform: translateY(-4px);
+  background: #d81b60;
+}
+
+/* ANIMACIÓN */
+.animar-entrada {
+  animation: slideUp 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(120px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 </style>
 </head>
 
 <body>
-
-<div id="petals-container"></div>
 
 <div class="sobre" onclick="abrirCarta()">
   <div class="icon">💌</div>
@@ -153,15 +165,29 @@
 
 <div class="carta" id="carta">
   <div class="titulo">María José</div>
+
   <div class="texto">
-    Hay personas que no necesitan hacer ruido<br>
-    para dejar huella.<br><br>
-    Tu forma de sentir y de mirar el mundo<br>
-    es un regalo silencioso.
+    Hoy no es un día cualquiera.<br>
+    Hoy se celebra tu esencia,<br>
+    esa forma tan tuya de iluminar sin hacer ruido.<br><br>
+
+    Hay personas que llegan al mundo<br>
+    para dejar huellas suaves pero eternas,<br>
+    y tú eres una de ellas.<br><br>
+
+    Que la vida te regale instantes sinceros,<br>
+    sonrisas que nazcan sin aviso,<br>
+    y caminos donde siempre te sientas en casa.<br><br>
+
+    <strong>Hoy se celebra tu existencia,<br>
+    y todo lo bonito que despiertas.</strong>
   </div>
+
   <div class="firma">Con cariño, Michelle 🤍</div>
-  
-  <a href="../index.html" class="btn-next" onclick="marcarVisto()">Continuar el camino →</a>
+
+  <a href="../index.html" class="btn-next" onclick="marcarVisto()">
+    Continuar el camino →
+  </a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -173,37 +199,22 @@ function abrirCarta(){
   carta.style.display = "block";
   carta.classList.add('animar-entrada');
 
-  // Efecto de flores (pétalos rosas y blancos)
-  var end = Date.now() + (2 * 1000);
-  var colors = ['#fbc2eb', '#ffffff', '#e91e63'];
+  const end = Date.now() + 2200;
+  const colors = ['#fbc2eb', '#ffffff', '#e91e63'];
 
-  (function frame() {
+  (function frame(){
     confetti({
-      particleCount: 2,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      colors: colors,
-      shapes: ['circle'] // Simula pétalos
+      particleCount: 3,
+      spread: 70,
+      origin: { x: Math.random(), y: 0.6 },
+      colors: colors
     });
-    confetti({
-      particleCount: 2,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      colors: colors,
-      shapes: ['circle']
-    });
-
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  }());
+    if(Date.now() < end) requestAnimationFrame(frame);
+  })();
 }
 
-function marcarVisto() {
-  // Esta línea es clave para que el index.html sepa que puede mostrar el Paso 2
-  localStorage.setItem('read_presentacion', 'true');
+function marcarVisto(){
+  localStorage.setItem('read_presentacion','true');
 }
 </script>
 

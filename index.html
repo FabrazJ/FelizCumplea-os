@@ -2,261 +2,306 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz Cumpleaños María José ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoy se celebra tu cumpleaños ✨</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    height: 100vh;
-    background: radial-gradient(circle at top, #ffe4ec, #fbc2eb, #fad0c4);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    animation: fondo 20s infinite alternate;
+:root{
+  --rosa:#e91e63;
+  --rosa-suave:#f8bbd0;
+  --dorado:#d4af37;
+  --gris:#3f3f3f;
+  --blanco:#fffdfc;
 }
 
-/* TARJETA */
-.card {
-    background: rgba(255,255,255,0.92);
-    width: 90%;
-    max-width: 520px;
-    padding: 60px 45px;
-    border-radius: 35px;
-    text-align: center;
-    box-shadow: 0 40px 90px rgba(0,0,0,0.25);
-    position: relative;
-    animation: entrada 2s ease;
-    z-index: 5;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:
+    radial-gradient(circle at top,#ffe4ec,#fbc2eb 55%),
+    linear-gradient(180deg,#fad0c4,#ffffff);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--gris);
 }
 
-/* BRILLO LUJO */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 35px;
-    background: linear-gradient(120deg, transparent, rgba(255,215,200,0.45), transparent);
-    animation: brillo 5s infinite;
-    pointer-events: none;
+/* FLORES */
+.flower{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  opacity:.75;
+  animation:fall linear infinite;
+  pointer-events:none;
+  z-index:1;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* TITULOS */
-h1 {
-    font-family: 'Playfair Display', serif;
-    color: #d81b60;
-    font-size: 34px;
-    margin-bottom: 10px;
+/* CONTENEDOR */
+.container{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
 }
 
-h2 {
-    font-weight: 300;
-    color: #777;
-    font-size: 16px;
+/* PORTADA */
+.cover{
+  background:linear-gradient(180deg,#ffffff,#fdf0f6);
+  padding:80px 60px;
+  border-radius:38px;
+  box-shadow:0 40px 90px rgba(0,0,0,.28);
+  text-align:center;
+  max-width:620px;
+  width:100%;
+  animation:fadeIn 1.6s ease;
 }
 
-/* MENSAJE */
-#mensaje {
-    margin-top: 35px;
-    font-size: 15.5px;
-    line-height: 1.9;
-    color: #444;
-    min-height: 150px;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;}
 }
 
-/* BOTONES */
-button {
-    margin-top: 30px;
-    padding: 16px 45px;
-    border-radius: 50px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(135deg, #d81b60, #ff8fa3);
-    color: white;
-    box-shadow: 0 20px 40px rgba(216,27,96,0.5);
-    transition: all 0.4s ease;
+.icon{
+  font-size:5.5rem;
+  animation:float 3s infinite ease-in-out;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
 }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 28px 60px rgba(216,27,96,0.7);
+.frase-dia{
+  margin-top:20px;
+  font-size:.85rem;
+  letter-spacing:4px;
+  color:var(--rosa);
 }
 
-/* FIRMA */
-.firma {
-    margin-top: 40px;
-    font-style: italic;
-    color: #777;
-    font-size: 14px;
+.nombre{
+  font-family:'Great Vibes',cursive;
+  font-size:5rem;
+  color:var(--rosa);
+  margin:20px 0;
+  text-shadow:0 0 28px rgba(233,30,99,.4);
 }
 
-/* VELAS */
-.cake {
-    font-size: 55px;
-    margin-top: 20px;
-    cursor: pointer;
-    animation: flama 1.5s infinite alternate;
+.descripcion{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  line-height:1.8;
 }
 
-@keyframes flama {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
+button{
+  margin-top:40px;
+  padding:18px 64px;
+  border-radius:50px;
+  border:none;
+  font-size:1.05rem;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(45deg,var(--rosa),#ff7aa2);
+  transition:.4s;
+}
+button:hover{
+  transform:translateY(-6px);
+  box-shadow:0 25px 55px rgba(233,30,99,.55);
 }
 
-/* ANIMACIONES */
-@keyframes fondo {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(25deg); }
+.detalle{
+  margin-top:22px;
+  font-size:.9rem;
+  color:#777;
 }
 
-@keyframes entrada {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+/* CARTA */
+.card{
+  display:none;
+  max-width:980px;
+  width:100%;
+  background:linear-gradient(180deg,#ffffff,#fdf4f8);
+  padding:75px 85px;
+  border-radius:34px;
+  box-shadow:0 45px 110px rgba(0,0,0,.32);
+  animation:fadeUp 1.6s ease forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(45px);}
+  to{opacity:1;}
 }
 
-@keyframes brillo {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(100%); }
+.titulo-carta{
+  font-family:'Great Vibes',cursive;
+  font-size:5.6rem;
+  text-align:center;
+  color:var(--rosa);
 }
 
-/* CONFETTI */
-.confetti {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    animation: caer 4s linear forwards;
+.divider{
+  width:150px;
+  height:3px;
+  margin:36px auto;
+  background:linear-gradient(to right,var(--rosa-suave),var(--dorado));
 }
 
-@keyframes caer {
-    to {
-        transform: translateY(120vh) rotate(360deg);
-        opacity: 0;
-    }
+.mensaje{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;
+  line-height:2.1;
+}
+.mensaje p{
+  margin-bottom:28px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:textFade 1.2s ease forwards;
+}
+.mensaje p:nth-child(n){
+  animation-delay:calc(var(--i)*.45s);
+}
+@keyframes textFade{
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* CORAZONES */
-.heart {
-    position: absolute;
-    bottom: -20px;
-    font-size: 22px;
-    animation: flotar linear infinite;
+.destacado{color:var(--rosa);font-weight:600;}
+
+.firma{
+  margin-top:55px;
+  text-align:right;
+  font-size:1.35rem;
+  font-family:'Playfair Display',serif;
+  color:var(--rosa);
 }
 
-@keyframes flotar {
-    to {
-        transform: translateY(-120vh) scale(1.6);
-        opacity: 0;
-    }
+/* FINAL */
+.final{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at center,#ffe4ec,#fbc2eb 70%),
+    linear-gradient(180deg,#fad0c4,#ffffff);
+  z-index:10;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.final h1{
+  font-family:'Great Vibes',cursive;
+  font-size:6rem;
+  color:var(--rosa);
+}
+.final p{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;
+  line-height:1.9;
+}
+
+.brillo{
+  font-size:4.2rem;
+  animation:shine 2.5s infinite ease-in-out;
+}
+@keyframes shine{
+  0%,100%{transform:scale(1);opacity:.8;}
+  50%{transform:scale(1.4);opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Feliz Cumpleaños ✨<br>María José</h1>
-    <h2>Hoy el mundo celebra tu existencia</h2>
+<!-- FLORES -->
+<script>
+for(let i=0;i<50;i++){
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerHTML="🌸";
+  f.style.left=Math.random()*100+"vw";
+  f.style.fontSize=(12+Math.random()*18)+"px";
+  f.style.animationDuration=(6+Math.random()*10)+"s";
+  document.body.appendChild(f);
+}
+</script>
 
-    <div class="cake" onclick="soplar()">🎂</div>
+<div class="container">
 
-    <p id="mensaje"></p>
-
-    <button onclick="siguiente()">🎁 Ver mensaje</button>
-
-    <div class="firma">
-        Con cariño sincero,<br>
-        Michelle 🤍
-    </div>
+<!-- PORTADA -->
+<div class="cover" id="cover">
+  <div class="icon">🎉</div>
+  <div class="frase-dia">HOY SE CELEBRA TU DÍA DE CUMPLEAÑOS</div>
+  <div class="nombre">María José</div>
+  <div class="descripcion">
+    Hoy el mundo tiene un motivo bonito para sonreír.<br>
+    Hoy se celebra tu existencia.
+  </div>
+  <button id="abrir">Descubrir mensaje</button>
+  <div class="detalle">Este mensaje fue pensado solo para ti.</div>
 </div>
 
-<!-- SONIDOS -->
-<audio id="musica" loop>
-    <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-112.mp3">
+<!-- CARTA -->
+<div class="card" id="card">
+  <div class="titulo-carta">María José</div>
+  <div class="divider"></div>
+
+  <div class="mensaje">
+    <p style="--i:1">Hoy se celebra tu cumpleaños, pero también se celebra tu forma de ser, tu esencia, tu sensibilidad y esa manera tan bonita que tienes de estar en la vida.</p>
+    <p style="--i:2">Se celebra tu sonrisa, tu calma, tu capacidad de hacer que los momentos simples se sientan especiales sin siquiera intentarlo.</p>
+    <p style="--i:3">Hay personas que iluminan sin hacer ruido, que dejan huella sin imponer su presencia. Tú eres exactamente así.</p>
+    <p style="--i:4">Hoy quiero desearte un año lleno de tranquilidad, de sueños cumplidos, de abrazos sinceros y de momentos que te hagan sentir orgullosa de quién eres.</p>
+    <p style="--i:5">Que nunca te falte paz, ni motivos para sonreír, ni personas que sepan verte, cuidarte y valorarte.</p>
+    <p style="--i:6">Porque eres <span class="destacado">valiosa, auténtica y profundamente especial</span>, incluso cuando no te das cuenta.</p>
+    <p style="--i:7">Que este nuevo año te recuerde lo mucho que mereces todo lo bonito que sueñas.</p>
+  </div>
+
+  <div class="firma">Con cariño sincero, Michelle 🤍</div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button id="finalBtn">Mensaje final</button>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="final" id="final">
+  <div>
+    <div class="brillo">✨</div>
+    <h1>Feliz Cumpleaños</h1>
+    <p>
+      Que la vida te abrace bonito,<br>
+      que nunca olvides lo especial que eres,<br>
+      y que hoy te sientas celebrada<br>
+      como realmente mereces.
+    </p>
+  </div>
+</div>
+
+</div>
+
+<audio autoplay loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-112.mp3">
 </audio>
 
 <audio id="cumple">
-    <source src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3">
+  <source src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3">
 </audio>
 
 <script>
-const mensajes = [
-`Hoy celebramos tu vida 🌸<br><br>
-Tu forma de ser,
-tu calma,
-y esa luz que sin darte cuenta
-regalas a los demás.`,
-
-`Que este nuevo año
-te abrace bonito ✨<br><br>
-Que te regale paz,
-momentos sinceros
-y sonrisas que duren.`,
-
-`María José 💖<br><br>
-Hoy no solo cumples años,
-hoy celebramos
-lo especial que eres.
-Feliz cumpleaños 🎂✨`
-];
-
-let i = 0;
-
-function escribir(texto) {
-    const m = document.getElementById("mensaje");
-    m.innerHTML = "";
-    let x = 0;
-    const t = setInterval(() => {
-        m.innerHTML += texto.charAt(x);
-        x++;
-        if (x >= texto.length) clearInterval(t);
-    }, 35);
-}
-
-escribir(mensajes[0]);
-
-function siguiente() {
-    i = (i + 1) % mensajes.length;
-    escribir(mensajes[i]);
-    lanzarConfetti();
-    corazones();
-    document.getElementById("musica").play();
-}
-
-function soplar() {
-    document.querySelector(".cake").innerHTML = "🕯️✨";
-    document.getElementById("cumple").play();
-    lanzarConfetti();
-    corazones();
-}
-
-/* EFECTOS */
-function lanzarConfetti() {
-    for (let i = 0; i < 45; i++) {
-        const c = document.createElement("div");
-        c.className = "confetti";
-        c.style.left = Math.random()*100 + "vw";
-        c.style.background = `hsl(${Math.random()*360},100%,70%)`;
-        document.body.appendChild(c);
-        setTimeout(()=>c.remove(),4000);
-    }
-}
-
-function corazones() {
-    for (let i = 0; i < 25; i++) {
-        const h = document.createElement("div");
-        h.className = "heart";
-        h.innerHTML = "💖";
-        h.style.left = Math.random()*100 + "vw";
-        h.style.animationDuration = 4 + Math.random()*4 + "s";
-        document.body.appendChild(h);
-        setTimeout(()=>h.remove(),9000);
-    }
-}
+abrir.onclick=()=>{
+  cover.style.display="none";
+  card.style.display="block";
+  document.getElementById("cumple").play();
+};
+finalBtn.onclick=()=>{
+  card.style.display="none";
+  final.style.display="flex";
+};
 </script>
 
 </body>

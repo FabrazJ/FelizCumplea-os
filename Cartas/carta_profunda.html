@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Una carta para ti ✨</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,21 +22,24 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  /* min-height evita que el fondo se corte en móviles si el contenido crece */
+  min-height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, var(--soft-pink) 0%, var(--soft-blue) 100%);
   font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
+  /* Permitimos scroll en el body solo si es estrictamente necesario */
+  overflow-x: hidden;
   padding: 20px;
 }
 
 /* SOBRE */
 .sobre {
-  width: clamp(280px, 40vw, 350px);
-  padding: 40px;
+  width: 100%;
+  max-width: 320px;
+  padding: 40px 20px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -47,20 +50,20 @@ body {
 }
 
 .sobre:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-5px);
   box-shadow: 0 30px 60px rgba(233,30,99,0.2);
 }
 
 .sobre .icon {
-  font-size: 4rem;
+  font-size: clamp(3rem, 10vw, 4rem);
   margin-bottom: 15px;
   display: block;
 }
 
 .sobre .label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   color: var(--pink-accent);
   text-transform: uppercase;
 }
@@ -68,45 +71,38 @@ body {
 /* CARTA */
 .carta {
   display: none;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  padding: clamp(30px, 6vw, 60px);
+  padding: clamp(25px, 7vw, 50px);
   border-radius: 30px;
   width: 100%;
-  max-width: 650px; /* Reducido para mejor legibilidad */
-  max-height: 85vh;
-  overflow-y: auto; /* Permite scroll si el texto es largo en móviles */
+  max-width: 600px;
+  /* Importante para móviles: que no exceda la pantalla */
+  max-height: 90vh; 
+  overflow-y: auto;
   text-align: center;
   box-shadow: 0 25px 80px rgba(0,0,0,0.15);
   position: relative;
   border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* Decoraciones en esquinas */
+/* Decoraciones */
 .carta .deco {
   position: absolute;
-  font-size: 1.5rem;
-  opacity: 0.6;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  opacity: 0.5;
 }
-.deco-tl { top: 20px; left: 20px; }
-.deco-br { bottom: 20px; right: 20px; }
-
-.titulo {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.5rem, 8vw, 5.5rem);
-  color: var(--pink-accent);
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
+.deco-tl { top: 15px; left: 15px; }
+.deco-br { bottom: 15px; right: 15px; }
 
 .texto {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  line-height: 1.8;
+  font-size: clamp(1rem, 4.5vw, 1.35rem); /* Ajuste más agresivo para móviles */
+  line-height: 1.7;
   color: var(--text-color);
   font-style: italic;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .texto strong {
@@ -114,51 +110,52 @@ body {
   margin-top: 20px;
   color: #000;
   font-weight: 700;
+  font-size: 1.1em;
 }
 
-.firma {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  color: var(--pink-accent);
-  margin-bottom: 30px;
-}
-
-/* BOTÓN */
+/* BOTÓN RESPONSIVE */
 .btn-next {
-  padding: 15px 40px;
+  padding: 14px 30px;
   background: var(--pink-accent);
   color: white;
   text-decoration: none;
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
   display: inline-block;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(233,30,99,0.3);
+  box-shadow: 0 10px 20px rgba(233,30,99,0.2);
+  width: 100%; /* En móviles ocupa el ancho disponible */
+  max-width: 280px; /* En escritorio se limita */
 }
 
-.btn-next:hover {
-  transform: scale(1.05);
-  background: #c2185b;
-  box-shadow: 0 15px 30px rgba(233,30,99,0.4);
+.btn-next:active {
+  transform: scale(0.95);
 }
 
 /* ANIMACIONES */
 .animar-entrada {
-  animation: slideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* SCROLLBAR PERSONALIZADO */
-.carta::-webkit-scrollbar {
-  width: 6px;
+/* Media Query para pantallas muy pequeñas o modo horizontal corto */
+@media (max-height: 500px) {
+  .carta {
+    padding: 20px;
+  }
+  .texto {
+    margin-bottom: 15px;
+  }
 }
+
+/* SCROLLBAR PERSONALIZADO */
+.carta::-webkit-scrollbar { width: 5px; }
 .carta::-webkit-scrollbar-thumb {
   background: var(--soft-pink);
   border-radius: 10px;
@@ -169,28 +166,76 @@ body {
 
   <div class="sobre" id="sobre" onclick="abrirCarta()">
     <span class="icon">💌</span>
-    <div class="label">Una cartita para ti</div>
+    <div class="label">Toca para abrir</div>
   </div>
 
   <div class="carta" id="carta">
     <span class="deco deco-tl">🌸</span>
     <span class="deco deco-br">🌻</span>
     
-    <div class="texto">
-      Hoy quiero regalarte palabras sencillas,<br>
-      de esas que no hacen ruido,<br>
-      pero que se quedan.<br><br>
+   <div class="texto">
+  Hoy quiero regalarte palabras sencillas,<br>
+  de esas que no hacen ruido,<br>
+  pero que se quedan a vivir en el pecho.<br><br>
 
-      Hay personas que no necesitan brillar fuerte<br>
-      para iluminarlo todo, y tú tienes esa luz tranquila<br>
-      que acompaña, que calma, que hace bien.<br><br>
+  Palabras que no buscan impresionar,<br>
+  sino abrazarte despacio,<br>
+  como lo hace la calma cuando llega sin avisar.<br><br>
 
-      Ojalá la vida te trate con la misma ternura<br>
-      con la que tú miras al mundo. Que encuentres paz en lo cotidiano, alegría en lo pequeño.<br><br>
+  Hay personas que no necesitan brillar fuerte<br>
+  para iluminarlo todo,<br>
+  y tú eres una de ellas.<br>
+  Tu luz no encandila,<br>
+  acompaña.<br>
+  No exige atención,<br>
+  inspira.<br><br>
 
-      <strong>Hoy se celebra tu existencia<br>
-      y todo lo bueno que nace de ti.</strong>
-    </div>
+  Tienes esa manera tan tuya de estar en el mundo,<br>
+  de hacer que los días sean más suaves,<br>
+  de convertir lo simple en algo bonito<br>
+  sin siquiera intentarlo.<br><br>
+
+  Eres la mujer más maravillosa<br>
+  no por lo que todos ven,<br>
+  sino por lo que muy pocos alcanzan a comprender:<br>
+  tu sensibilidad escondida,<br>
+  tu fortaleza silenciosa,<br>
+  tu corazón que siente profundo<br>
+  incluso cuando sonríes.<br><br>
+
+  Nunca dejes que nadie te apague,<br>
+  ni que el ruido del mundo te convenza<br>
+  de que tu luz es poca.<br>
+  Hay luces que no están hechas para gritar,<br>
+  están hechas para guiar.<br><br>
+
+  Ojalá la vida te trate con la misma ternura<br>
+  con la que tú miras al mundo,<br>
+  con la misma paciencia con la que cuidas,<br>
+  con la misma dulzura con la que amas.<br><br>
+
+  Y si algún día dudas,<br>
+  si el cansancio pesa más de la cuenta,<br>
+  recuerda esto:<br>
+  hay almas que florecen incluso en silencio,<br>
+  y la tuya es una de las más bonitas.<br><br>
+
+  Que nunca olvides lo valiosa que eres,<br>
+  lo mucho que significas,<br>
+  la huella que dejas incluso sin darte cuenta.<br><br>
+
+  <strong>
+    Hoy se celebra tu existencia,<br>
+    tu forma de sentir,<br>
+    tu manera de amar la vida,<br>
+    y todo lo bueno, hermoso y verdadero<br>
+    que nace de ti.<br><br>
+
+    Hoy se celebra que seas tú,<br>
+    exactamente como eres.
+  </strong>
+</div>
+
 
     <a href="../index.html" class="btn-next" onclick="marcarVisto()">
       Continuar el camino →
@@ -208,8 +253,8 @@ function abrirCarta(){
   carta.style.display = "block";
   carta.classList.add('animar-entrada');
 
-  // Lanzar confetti de manera más elegante
-  var duration = 3 * 1000;
+  // Confetti optimizado para móviles
+  var duration = 2 * 1000;
   var end = Date.now() + duration;
 
   (function frame() {
@@ -217,14 +262,14 @@ function abrirCarta(){
       particleCount: 2,
       angle: 60,
       spread: 55,
-      origin: { x: 0 },
+      origin: { x: 0, y: 0.8 },
       colors: ['#e91e63', '#fbc2eb']
     });
     confetti({
       particleCount: 2,
       angle: 120,
       spread: 55,
-      origin: { x: 1 },
+      origin: { x: 1, y: 0.8 },
       colors: ['#a6c1ee', '#e91e63']
     });
 

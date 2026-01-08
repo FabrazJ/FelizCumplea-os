@@ -2,173 +2,167 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>¡Feliz Cumpleaños! 🎉</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --primary:#e91e63;
   --soft:#ffe4ec;
+  --dark-pink: #c2185b;
 }
 
 *{box-sizing:border-box;}
 
 body{
   margin:0;
-  width:100vw;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle at top,#ffffff 0%,#ffe4ec 100%);
-  font-family:'Montserrat',sans-serif;
-  overflow:hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ffffff 0%, #ffe4ec 100%);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  padding: 20px;
 }
 
 .container{
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* PANTALLA INICIAL */
 .sobre{
-  width:340px;
-  height:210px;
-  background:#fff;
-  border-radius:22px;
-  border:2px dashed var(--primary);
-  box-shadow:0 25px 70px rgba(233,30,99,0.25);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  animation:pulse 2.5s infinite;
+  width: 100%;
+  max-width: 340px;
+  height: 210px;
+  background: #fff;
+  border-radius: 22px;
+  border: 2px dashed var(--primary);
+  box-shadow: 0 25px 70px rgba(233,30,99,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: pulse 2.5s infinite;
+  padding: 20px;
+  text-align: center;
 }
 
 @keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.05)}
+  0%, 100%{transform: scale(1)}
+  50%{transform: scale(1.03)}
 }
 
-.sobre .icon{
-  font-size:4.4rem;
-}
-
+.sobre .icon{ font-size: 4rem; }
 .sobre span{
-  margin-top:14px;
-  letter-spacing:3px;
-  font-size:.85rem;
-  color:var(--primary);
-  font-weight:500;
+  margin-top: 14px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 /* CELEBRACIÓN */
 .cumple{
-  display:none;
-  width:85%;
-  max-width:900px;
-  background:#fff;
-  border-radius:40px;
-  padding:55px 70px;
-  text-align:center;
-  box-shadow:0 50px 120px rgba(0,0,0,.15);
-  position:relative;
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  padding: clamp(30px, 8vw, 60px) clamp(20px, 5vw, 50px);
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-.cumple::before,
-.cumple::after{
-  position:absolute;
-  font-size:3rem;
-  opacity:.35;
+/* Decoraciones */
+.deco {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.4;
+  z-index: 1;
 }
-
-.cumple::before{
-  content:"🎈";
-  top:25px;
-  left:30px;
-}
-
-.cumple::after{
-  content:"🎂";
-  bottom:25px;
-  right:30px;
-}
+.d1 { top: 20px; left: 20px; }
+.d2 { bottom: 20px; right: 20px; }
 
 /* TÍTULO */
 .titulo{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(4.2rem,6vw,5.6rem);
-  color:var(--primary);
-  margin-bottom:10px;
-  animation:bounce 1.5s ease;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 10vw, 5rem);
+  color: var(--primary);
+  margin-bottom: 5px;
+  line-height: 1.1;
 }
 
-@keyframes bounce{
-  0%{transform:scale(.8);opacity:0}
-  60%{transform:scale(1.1)}
-  100%{transform:scale(1);opacity:1}
-}
-
-/* SUBTÍTULO */
 .sub{
-  font-size:1rem;
-  letter-spacing:4px;
-  color:#c2185b;
-  font-weight:500;
-  margin-bottom:25px;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--dark-pink);
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
-/* TEXTO */
+/* TEXTO SENTIMENTAL */
 .texto{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.15rem,1.7vw,1.4rem);
-  line-height:1.85;
-  color:#444;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.7;
+  color: #444;
+  font-style: italic;
 }
 
-/* MENSAJE DESTACADO */
+.texto p { margin-bottom: 20px; }
+
 .highlight{
-  margin-top:18px;
-  font-size:1.25rem;
-  font-weight:500;
-  color:var(--primary);
+  margin-top: 25px;
+  font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  font-weight: 600;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.4;
 }
 
 /* BOTÓN */
 .btn-continuar{
-  margin-top:35px;
-  padding:14px 42px;
-  background:var(--primary);
-  color:#fff;
-  border-radius:50px;
-  text-decoration:none;
-  font-size:.9rem;
-  font-weight:500;
-  display:inline-block;
-  transition:.3s;
-  box-shadow:0 12px 30px rgba(233,30,99,.3);
+  margin-top: 35px;
+  padding: 16px 40px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(233,30,99,0.3);
 }
 
-.btn-continuar:hover{
-  transform:scale(1.08);
-  background:#c2185b;
-}
+.btn-continuar:hover{ transform: translateY(-3px); background: var(--dark-pink); }
 
 /* ANIMACIÓN ENTRADA */
-.fade-in{
-  animation:aparecer 1.4s cubic-bezier(.22,1,.36,1);
-}
+.fade-in{ animation: aparecer 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
 
 @keyframes aparecer{
-  from{opacity:0;transform:scale(.9) translateY(40px);}
-  to{opacity:1;transform:scale(1) translateY(0);}
+  from{ opacity: 0; transform: translateY(30px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 400px) {
+  .cumple { padding: 40px 15px; }
+  .deco { display: none; } /* Quitamos iconos para dar espacio al texto */
 }
 </style>
 </head>
@@ -177,35 +171,70 @@ body{
 
 <div class="container">
 
-  <!-- INICIO -->
   <div class="sobre" onclick="mostrarCumple()">
     <div class="icon">🎁</div>
-    <span>TOCA PARA FESTEJAR</span>
+    <span>Para una mujer especial</span>
   </div>
 
-  <!-- CELEBRACIÓN -->
   <div class="cumple" id="cumple">
+    <span class="deco d1">✨</span>
+    <span class="deco d2">🌸</span>
+
     <div class="titulo">¡Feliz Cumpleaños!</div>
-    <div class="sub">HOY TODO ES PARA TI</div>
+    <div class="sub">Celebrando tu esencia única</div>
 
-    <div class="texto">
-      Hoy el mundo sonríe un poquito más,<br>
-      porque celebra a alguien increíble.<br><br>
+   <div class="texto">
+  <p>
+    Hoy el mundo amaneció distinto,  
+    porque hoy se celebra algo muy especial:  
+    <strong>tu cumpleaños</strong>.  
+    Un día hecho para sonreír, para abrazar fuerte  
+    y para recordar lo increíble que eres.
+  </p>
 
-      Que este nuevo año venga cargado de risas,<br>
-      momentos inolvidables,<br>
-      sueños cumplidos y abrazos sinceros.<br><br>
+  <p>
+    Que este nuevo año de vida venga cargado de risas sinceras,  
+    de momentos que te hagan decir “qué bonito es vivir”,  
+    de sueños que se acerquen sin miedo  
+    y de sorpresas que te roben carcajadas.
+  </p>
 
-      Que nunca te falten razones para sonreír<br>
-      ni personas que te celebren como mereces.
-    </div>
+  <p>
+    Hoy no es día de preocupaciones,  
+    hoy es día de pastel, de deseos al soplar velitas,  
+    de sonrisas que no se esconden  
+    y de sentirte querida de verdad.
+  </p>
+
+  <p>
+    Que nunca te falten razones para celebrar,  
+    canciones que te hagan bailar sin pensar,  
+    personas que te abracen el alma  
+    y momentos que se conviertan en recuerdos felices.
+  </p>
+
+  <p>
+    Sonríe mucho hoy, ríe fuerte,  
+    disfruta cada segundo  
+    y recuerda que el mundo es un lugar más bonito  
+    simplemente porque tú estás en él.
+  </p>
+
+  <p>
+    <strong>
+      Feliz cumpleaños ✨  
+      Que este día sea tan bonito, brillante y especial  
+      como tu sonrisa.
+    </strong>
+  </p>
+</div>
 
     <div class="highlight">
-      🎉 Hoy se celebra tu vida, tu luz y todo lo bonito que eres 🎉
+      💖 Eres una mujer extraordinaria y hoy el universo entero festeja tu vida. 💖
     </div>
 
     <a href="../index.html" class="btn-continuar" onclick="guardarProgreso()">
-      Seguir celebrando →
+      Seguir el festejo →
     </a>
   </div>
 
@@ -220,16 +249,30 @@ function mostrarCumple(){
   cumple.style.display="block";
   cumple.classList.add('fade-in');
 
-  const end=Date.now()+3000;
-  (function frame(){
+  // Lluvia de confetti continua por 4 segundos
+  const end = Date.now() + 4000;
+  const colors = ['#e91e63', '#ffffff', '#ffd1dc', '#ff4081'];
+
+  (function frame() {
     confetti({
-      particleCount:6,
-      spread:80,
-      origin:{x:Math.random(),y:0.6},
-      colors:['#e91e63','#ffe4ec','#f8bbd0','#ffd1dc']
+      particleCount: 3,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0, y: 0.7 },
+      colors: colors
     });
-    if(Date.now()<end) requestAnimationFrame(frame);
-  })();
+    confetti({
+      particleCount: 3,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1, y: 0.7 },
+      colors: colors
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  }());
 }
 
 function guardarProgreso(){

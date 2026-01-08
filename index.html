@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un recorrido para ti 💌</title>
+<title>Feliz Cumpleaños María José 🎂</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -12,9 +12,9 @@
 
 body{
   height:100vh;
-  background:linear-gradient(-45deg,#fff1eb,#ace0f9,#fdeff2,#e6f0ff);
+  background:linear-gradient(-45deg,#ffe5ec,#fff1c1,#e0f7fa,#fce4ff);
   background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+  animation:bgMove 14s ease infinite;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -36,53 +36,63 @@ body{
 
 /* SOBRE */
 .envelope{
-  width:320px;
-  height:200px;
-  background:#f7c6d0;
-  margin:0 auto 50px;
-  border-radius:0 0 22px 22px;
+  width:340px;
+  height:220px;
+  background:linear-gradient(135deg,#ffb3c6,#ffc8dd);
+  margin:0 auto 55px;
+  border-radius:0 0 26px 26px;
   cursor:pointer;
-  box-shadow:0 30px 70px rgba(0,0,0,.2);
-  animation:pulse 2.5s infinite;
+  box-shadow:0 35px 80px rgba(0,0,0,.25);
+  animation:pulse 2.8s infinite;
   position:relative;
 }
 
 @keyframes pulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.04)}
+  50%{transform:scale(1.05)}
 }
 
 .flap{
   position:absolute;
   inset:0;
-  background:#f2a7b4;
-  clip-path:polygon(0 0,50% 60%,100% 0);
+  background:#ff8fab;
+  clip-path:polygon(0 0,50% 65%,100% 0);
   transform-origin:top;
-  transition:1s ease;
-}
-
-.envelope.open .flap{transform:rotateX(180deg)}
-
-.letter{
-  position:absolute;
-  top:18px;left:18px;right:18px;
-  background:#fff;
-  padding:20px;
-  border-radius:14px;
-  transform:translateY(80px);
-  opacity:0;
   transition:1.2s ease;
 }
 
+.envelope.open .flap{
+  transform:rotateX(180deg);
+}
+
+.letter{
+  position:absolute;
+  top:18px;
+  left:18px;
+  right:18px;
+  background:#fff;
+  padding:22px;
+  border-radius:16px;
+  transform:translateY(90px);
+  opacity:0;
+  transition:1.4s ease;
+}
+
 .envelope.open .letter{
-  transform:translateY(-40px);
+  transform:translateY(-45px);
   opacity:1;
 }
 
 .letter h2{
   font-family:'Great Vibes',cursive;
-  font-size:2.2rem;
-  color:#d94f6a;
+  font-size:2.4rem;
+  color:#d6336c;
+  margin-bottom:10px;
+}
+
+.letter p{
+  font-size:13px;
+  color:#555;
 }
 
 /* RECORRIDO */
@@ -95,43 +105,42 @@ body{
   display:flex;
   justify-content:space-between;
   gap:18px;
-  animation:fadeUp 1s ease forwards;
+  animation:fadeUp 1.2s ease forwards;
 }
 
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1}
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .step{
   flex:1;
-  background:rgba(255,255,255,.65);
-  backdrop-filter:blur(6px);
-  border-radius:22px;
-  padding:16px 12px;
-  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(8px);
+  border-radius:24px;
+  padding:18px 14px;
+  box-shadow:0 14px 28px rgba(0,0,0,.15);
   transition:.4s;
   position:relative;
-  min-width:0;
 }
 
 .step h3{
   font-family:'Playfair Display',serif;
-  font-size:1rem;
+  font-size:1.05rem;
 }
 
 .step span{
   display:block;
   font-size:11px;
   color:#777;
-  margin:8px 0 12px;
+  margin:8px 0 14px;
 }
 
 .step a{
   display:block;
-  padding:11px;
+  padding:12px;
   border-radius:30px;
-  background:linear-gradient(135deg,#ffe29f,#ffa99f);
+  background:linear-gradient(135deg,#ffe066,#ffadad);
   text-decoration:none;
   color:#333;
   font-weight:500;
@@ -145,37 +154,37 @@ body{
 }
 
 .locked::after{
-  content:"🔒";
+  content:"🎁";
   position:absolute;
   top:10px;
   right:14px;
 }
 
 .active{
-  opacity:1;
-  animation:glow 2s infinite;
+  animation:glow 2.4s infinite;
 }
 
 @keyframes glow{
   0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)}
-  50%{box-shadow:0 0 16px rgba(255,180,120,.6)}
+  50%{box-shadow:0 0 22px rgba(255,180,120,.7)}
 }
 
 .reset{
-  margin-top:24px;
+  margin-top:18px;
   background:none;
   border:none;
   font-size:11px;
   color:#777;
   cursor:pointer;
   text-decoration:underline;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 /* RESPONSIVE */
 @media(max-width:720px){
-  .options.show{gap:10px}
-  .step h3{font-size:.9rem}
-  .step span{font-size:10px}
+  .options.show{flex-direction:column}
 }
 </style>
 </head>
@@ -187,44 +196,54 @@ body{
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
     <div class="letter">
-      <h2>Para ti 🌷</h2>
-      <p>Todo está aquí…<br>avanza a tu ritmo 💛</p>
+      <h2>Feliz cumpleaños<br>María José 🎂</h2>
+      <p>
+        Hoy se celebra tu vida ✨<br>
+        este recorrido es solo para ti,<br>
+        ábrelo con calma y sonríe 💐
+      </p>
     </div>
   </div>
 
   <div class="options" id="options">
 
     <div class="step active" id="step1">
-      <h3>Paso 1 ✨</h3>
-      <span>El inicio</span>
-      <a href="#" onclick="go('presentacion','Cartas/carta_presentacion.html')">Abrir carta</a>
+      <h3>Inicio 🎈</h3>
+      <span>Una carta especial</span>
+      <a href="#" onclick="go('presentacion','Cartas/carta_presentacion.html')">Abrir</a>
     </div>
 
     <div class="step locked" id="step2">
-      <h3>Paso 2 🎂</h3>
-      <span>Celebrarte</span>
-      <a>Leer deseo</a>
+      <h3>Tu día 🎂</h3>
+      <span>Celebrarte como mereces</span>
+      <a>Ver sorpresa</a>
     </div>
 
     <div class="step locked" id="step3">
-      <h3>Paso 3 💛</h3>
-      <span>Sentirte querida</span>
-      <a>Leer palabras</a>
+      <h3>Para ti 🌻</h3>
+      <span>Palabras con cariño</span>
+      <a>Leer mensaje</a>
     </div>
 
     <div class="step locked" id="step4">
-      <h3>Paso final 🌙</h3>
-      <span>Siempre aquí</span>
-      <a>Leer con calma</a>
+      <h3>Siempre 💖</h3>
+      <span>Un detalle final</span>
+      <a>Descubrir</a>
     </div>
 
   </div>
 
-  <button class="reset" onclick="reset()">Reiniciar recorrido</button>
+  <button class="reset" onclick="reset()">Reiniciar</button>
+  <button class="reset" onclick="unlockAll()">Habilitar todo</button>
 
 </div>
 
 <script>
+const options = document.getElementById('options');
+const step2 = document.getElementById('step2');
+const step3 = document.getElementById('step3');
+const step4 = document.getElementById('step4');
+
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
   setTimeout(()=>{
@@ -254,6 +273,13 @@ function checkProgress(){
     step4.classList.add('active');
     step4.querySelector('a').href='Cartas/carta_triste.html';
   }
+}
+
+function unlockAll(){
+  localStorage.setItem('presentacion',true);
+  localStorage.setItem('cumple',true);
+  localStorage.setItem('querida',true);
+  checkProgress();
 }
 
 function reset(){

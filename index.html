@@ -210,7 +210,7 @@ body{
     <div class="step active" id="step1">
       <h3>Inicio 🎈</h3>
       <span>Una carta especial</span>
-      <a href="#" onclick="go('presentacion','Cartas/carta_presentacion.html')">Abrir</a>
+      <a href="#" onclick="go('presentacion','Cartas/Hola.html')">Abrir</a>
     </div>
 
     <div class="step locked" id="step2">
@@ -261,17 +261,17 @@ function checkProgress(){
   if(localStorage.getItem('presentacion')){
     step2.classList.remove('locked');
     step2.classList.add('active');
-    step2.querySelector('a').onclick=()=>go('cumple','Cartas/carta_cumple.html');
+    step2.querySelector('a').onclick=()=>go('cumple','Cartas/Cumple.html');
   }
   if(localStorage.getItem('cumple')){
     step3.classList.remove('locked');
     step3.classList.add('active');
-    step3.querySelector('a').onclick=()=>go('querida','Cartas/carta_profunda.html');
+    step3.querySelector('a').onclick=()=>go('querida','Cartas/Carta.html');
   }
   if(localStorage.getItem('querida')){
     step4.classList.remove('locked');
     step4.classList.add('active');
-    step4.querySelector('a').href='Cartas/carta_triste.html';
+    step4.querySelector('a').href='Cartas/Frases.html';
   }
 }
 

@@ -2,22 +2,27 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Presentación ✨</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+  padding:20px;
   background:linear-gradient(-45deg,#fff1eb,#ace0f9,#fdeff2,#e6f0ff);
   background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+  animation:bgMove 14s ease infinite;
   font-family:'Poppins',sans-serif;
 }
 
@@ -28,60 +33,99 @@ body{
 }
 
 .carta{
-  max-width:680px;
-  width:90%;
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(8px);
+  width:100%;
+  max-width:720px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(10px);
   padding:70px 60px;
-  border-radius:40px;
+  border-radius:42px;
   text-align:center;
-  box-shadow:0 30px 80px rgba(0,0,0,.15);
+  box-shadow:0 30px 90px rgba(0,0,0,.18);
   animation:aparecer 1.4s ease;
 }
 
 @keyframes aparecer{
-  from{opacity:0;transform:translateY(30px) scale(.96)}
+  from{opacity:0;transform:translateY(40px) scale(.95)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
 
 .titulo{
   font-family:'Great Vibes',cursive;
-  font-size:4.2rem;
+  font-size:4.3rem;
   color:#d94f6a;
-  margin-bottom:25px;
+  margin-bottom:28px;
 }
 
 .texto{
   font-family:'Playfair Display',serif;
   font-size:1.35rem;
-  line-height:1.9;
+  line-height:1.95;
   color:#444;
-  margin-bottom:40px;
+  margin-bottom:45px;
+}
+
+.texto em{
+  color:#c94b64;
+  font-style:italic;
 }
 
 .btn-siguiente{
   display:inline-block;
-  padding:16px 40px;
-  border-radius:50px;
+  padding:18px 44px;
+  border-radius:60px;
   background:linear-gradient(135deg,#ffe29f,#ffa99f);
   color:#333;
   text-decoration:none;
   font-weight:500;
-  font-size:1rem;
-  box-shadow:0 12px 26px rgba(0,0,0,.2);
-  transition:.4s ease;
+  font-size:1.05rem;
+  box-shadow:0 14px 30px rgba(0,0,0,.22);
+  transition:.35s ease;
 }
 
 .btn-siguiente:hover{
-  transform:scale(1.08);
-  box-shadow:0 16px 34px rgba(0,0,0,.25);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 20px 40px rgba(0,0,0,.28);
 }
 
-/* Responsive */
-@media(max-width:600px){
-  .carta{padding:55px 35px}
-  .titulo{font-size:3.4rem}
-  .texto{font-size:1.15rem}
+/* ===== Responsive ===== */
+
+@media(max-width:900px){
+  .titulo{font-size:3.8rem}
+}
+
+@media(max-width:700px){
+  .carta{
+    padding:55px 40px;
+    border-radius:36px;
+  }
+  .titulo{
+    font-size:3.4rem;
+  }
+  .texto{
+    font-size:1.2rem;
+  }
+}
+
+@media(max-width:480px){
+  body{
+    padding:15px;
+  }
+  .carta{
+    padding:45px 25px;
+    border-radius:30px;
+  }
+  .titulo{
+    font-size:2.9rem;
+  }
+  .texto{
+    font-size:1.05rem;
+    line-height:1.8;
+  }
+  .btn-siguiente{
+    width:100%;
+    padding:16px;
+    font-size:1rem;
+  }
 }
 </style>
 </head>
@@ -91,13 +135,41 @@ body{
 <div class="carta">
   <div class="titulo">Hola de nuevo…</div>
 
-  <div class="texto">
-    Antes de seguir, quería decirte algo con calma.<br><br>
-    Este pequeño espacio no busca impresionar,<br>
-    solo existir para ti.<br><br>
-    Ojalá cada palabra que encuentres aquí<br>
-    te arranque una sonrisa sin que te des cuenta.
-  </div>
+ <div class="texto">
+  Antes de seguir, quería decirte algo con calma.<br><br>
+
+  Este pequeño espacio no busca impresionar,<br>
+  solo existir para ti.<br><br>
+
+  Aunque admito que cuando me preguntaste por el primer detalle,<br>
+  <em>si no tenía virus</em>, me reí fuerte…<br>
+  pero al mismo tiempo me preocupé,<br>
+  porque no sabía si realmente lo ibas a leer.<br><br>
+
+  Luego llegó tu mensaje.<br>
+  Sentí alivio al saber que sí lo habías leído,<br>
+  aunque confieso que nunca quise hacerte llorar.<br>
+  Solo quería sacarte una sonrisa,<br>
+  aunque sea chiquita.<br><br>
+
+  Entonces se me ocurrió una idea:<br>
+  subir este detalle de forma online,<br>
+  para que no desconfíes (cof cof 😌),<br>
+  y puedas abrirlo cuando quieras,<br>
+  desde tu celular, sin miedo alguno.<br><br>
+
+  Así que, si algún día sientes que todo está mal,<br>
+  estás cansada o dudando de todo,<br>
+  abre esto sin miedo<br>
+  (prometo que sigue sin tener virus).<br><br>
+
+  Léelo hasta el último paso,<br>
+  porque esta página es tuya,<br>
+  y fue creada especialmente<br>
+  para esos días en los que necesitas<br>
+  un recordatorio bonito<br>
+  y una sonrisa inesperada ✨😊
+</div>
 
   <a href="../index.html" class="btn-siguiente" onclick="marcarLeido()">
     Continuar el camino →
